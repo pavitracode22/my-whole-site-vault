@@ -47,6 +47,13 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Ecommerce Custom Colors
+        navy: "hsl(var(--navy))",
+        orange: "hsl(var(--orange))",
+        teal: "hsl(var(--teal))",
+        'offer-red': "hsl(var(--offer-red))",
+        'text-primary': "hsl(var(--text-primary))",
+        'text-secondary': "hsl(var(--text-secondary))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
