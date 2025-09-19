@@ -4,6 +4,7 @@ import { Star, Heart, Share2, ShoppingCart, Truck, Shield, RotateCcw } from "luc
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
+import ProductReviews from "@/components/ProductReviews";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -259,10 +260,11 @@ const ProductDetails = () => {
           </TabsContent>
           
           <TabsContent value="reviews" className="mt-6">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Customer Reviews</h3>
-              <p className="text-text-secondary">Reviews will be displayed here when connected to backend.</p>
-            </div>
+            <ProductReviews 
+              productId={product.id}
+              averageRating={product.rating}
+              totalReviews={product.reviews}
+            />
           </TabsContent>
         </Tabs>
 
