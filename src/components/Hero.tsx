@@ -87,35 +87,37 @@ const Hero = () => {
                 </div>
                 
                 {/* Content */}
-                <div className="absolute inset-0 container mx-auto px-4 flex items-center">
-                  <div className="max-w-xl text-white">
-                    <div className="mb-4 opacity-0 animate-fade-in" style={{animationDelay: "0.3s", animationFillMode: "forwards"}}>
-                      <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium border border-white/30">
-                        New Collection
-                      </span>
-                    </div>
-                    <h1 className="text-5xl md:text-7xl font-bold mb-6 opacity-0 animate-fade-in" style={{animationDelay: "0.5s", animationFillMode: "forwards"}}>
-                      {slide.title}
-                      <span className="block text-orange drop-shadow-lg animate-pulse">{slide.highlight}</span>
-                    </h1>
-                    <p className="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed opacity-0 animate-fade-in" style={{animationDelay: "0.7s", animationFillMode: "forwards"}}>
-                      {slide.description}
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in" style={{animationDelay: "0.9s", animationFillMode: "forwards"}}>
-                      <Button 
-                        size="lg"
-                        className="bg-gradient-to-r from-orange to-red-600 hover:from-orange/90 hover:to-red-600/90 text-white px-10 py-4 text-lg font-semibold shadow-2xl hover:shadow-orange/25 hover-scale group transition-all duration-300"
-                      >
-                        Shop Now
-                        <span className="ml-2 group-hover:translate-x-2 transition-transform duration-300 inline-block text-xl">→</span>
-                      </Button>
-                      <Button 
-                        variant="outline" 
-                        size="lg"
-                        className="border-2 border-white/80 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-navy px-10 py-4 text-lg font-semibold hover-scale transition-all duration-300"
-                      >
-                        Learn More
-                      </Button>
+                <div className="absolute inset-0 flex items-center">
+                  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-2xl text-white">
+                      <div className="mb-4 opacity-0 animate-fade-in" style={{animationDelay: "0.3s", animationFillMode: "forwards"}}>
+                        <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium border border-white/30">
+                          New Collection
+                        </span>
+                      </div>
+                      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 opacity-0 animate-fade-in leading-tight" style={{animationDelay: "0.5s", animationFillMode: "forwards"}}>
+                        {slide.title}
+                        <span className="block text-orange drop-shadow-lg animate-pulse">{slide.highlight}</span>
+                      </h1>
+                      <p className="text-lg sm:text-xl md:text-2xl mb-6 md:mb-8 text-white/90 leading-relaxed opacity-0 animate-fade-in max-w-xl" style={{animationDelay: "0.7s", animationFillMode: "forwards"}}>
+                        {slide.description}
+                      </p>
+                      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 opacity-0 animate-fade-in" style={{animationDelay: "0.9s", animationFillMode: "forwards"}}>
+                        <Button 
+                          size="lg"
+                          className="bg-gradient-to-r from-orange to-red-600 hover:from-orange/90 hover:to-red-600/90 text-white px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-2xl hover:shadow-orange/25 hover-scale group transition-all duration-300 w-full sm:w-auto"
+                        >
+                          Shop Now
+                          <span className="ml-2 group-hover:translate-x-2 transition-transform duration-300 inline-block text-lg sm:text-xl">→</span>
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          size="lg"
+                          className="border-2 border-white/80 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-navy px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold hover-scale transition-all duration-300 w-full sm:w-auto"
+                        >
+                          Learn More
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
