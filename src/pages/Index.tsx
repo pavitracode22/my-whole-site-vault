@@ -16,7 +16,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <AdBanners />
       <Header />
-      <main className="animate-fade-in">
+      <main>
         <Hero />
         <Categories />
         <BestSellers />

@@ -38,18 +38,18 @@ const ProductCard = ({
   };
 
   return (
-    <div className="product-card group animate-fade-in hover-scale">
+    <div className="product-card group transition-all duration-300">
       {/* Product Image */}
       <div className="relative overflow-hidden rounded-lg mb-4">
         {isOnSale && discount && (
-          <Badge className="absolute top-2 left-2 bg-offer-red text-white z-10 animate-pulse">
+          <Badge className="absolute top-2 left-2 bg-offer-red text-white z-10">
             -{discount}%
           </Badge>
         )}
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-2 right-2 bg-white/80 hover:bg-white z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover-scale"
+          className="absolute top-2 right-2 bg-white/80 hover:bg-white z-10 opacity-0 group-hover:opacity-100 transition-all duration-300"
         >
           <Heart className="h-4 w-4 hover:text-offer transition-colors" />
         </Button>
@@ -62,7 +62,7 @@ const ProductCard = ({
         
         {/* Overlay with quick view button */}
         <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <Button className="bg-white text-navy hover:bg-gray-100 hover-scale animate-fade-in">
+          <Button className="bg-white text-navy hover:bg-gray-100 transition-all duration-300">
             Quick View
           </Button>
         </div>
@@ -70,7 +70,7 @@ const ProductCard = ({
 
       {/* Product Info */}
       <div className="space-y-3">
-        <h3 className="font-semibold text-text-primary line-clamp-2 group-hover:text-teal transition-colors story-link">
+        <h3 className="font-semibold text-text-primary line-clamp-2 group-hover:text-teal transition-colors">
           {name}
         </h3>
         
@@ -95,7 +95,7 @@ const ProductCard = ({
         </div>
 
         {/* Add to Cart Button */}
-        <Button className="w-full bg-primary hover:bg-primary/90 text-white hover-scale group">
+        <Button className="w-full bg-primary hover:bg-primary/90 text-white transition-all duration-300 group">
           <ShoppingCart className="h-4 w-4 mr-2 group-hover:rotate-12 transition-transform" />
           Add to Cart
         </Button>

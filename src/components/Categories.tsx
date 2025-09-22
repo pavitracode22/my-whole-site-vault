@@ -60,10 +60,9 @@ const Categories = () => {
               <Button
                 key={index}
                 variant="ghost"
-                className="flex flex-col items-center p-6 h-auto bg-white hover:bg-white hover:shadow-lg transition-all duration-300 group hover-scale animate-fade-in"
-                style={{animationDelay: `${index * 0.1}s`}}
+                className="flex flex-col items-center p-6 h-auto bg-white hover:bg-white hover:shadow-lg transition-all duration-300 group"
               >
-                <div className={`p-4 rounded-full mb-3 ${category.color} group-hover:scale-110 transition-transform animate-float`}>
+                <div className={`p-4 rounded-full mb-3 ${category.color} group-hover:scale-110 transition-transform`}>
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3 className="font-semibold text-text-primary mb-1">

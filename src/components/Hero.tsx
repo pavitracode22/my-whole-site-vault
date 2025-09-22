@@ -92,36 +92,36 @@ const Hero = () => {
                 {/* Content */}
                 <div className="absolute inset-0 flex items-center justify-start">
                   <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-                    <div className="w-full flex items-center min-h-full">
-                      <div className="max-w-2xl text-white z-10 relative">
-                        <div className="mb-4 opacity-0 animate-fade-in" style={{animationDelay: "0.3s", animationFillMode: "forwards"}}>
-                          <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium border border-white/30">
-                            New Collection
-                          </span>
-                        </div>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 opacity-0 animate-fade-in leading-tight" style={{animationDelay: "0.5s", animationFillMode: "forwards"}}>
-                          {slide.title}
-                          <span className="block text-orange drop-shadow-lg animate-pulse">{slide.highlight}</span>
-                        </h1>
-                        <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 text-white/90 leading-relaxed opacity-0 animate-fade-in max-w-xl" style={{animationDelay: "0.7s", animationFillMode: "forwards"}}>
-                          {slide.description}
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 opacity-0 animate-fade-in" style={{animationDelay: "0.9s", animationFillMode: "forwards"}}>
-                          <Button 
-                            size="lg"
-                            className="bg-gradient-to-r from-orange to-red-600 hover:from-orange/90 hover:to-red-600/90 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold shadow-2xl hover:shadow-orange/25 hover-scale group transition-all duration-300 w-full sm:w-auto"
-                          >
-                            Shop Now
-                            <span className="ml-2 group-hover:translate-x-2 transition-transform duration-300 inline-block text-base sm:text-lg md:text-xl">→</span>
-                          </Button>
-                          <Button 
-                            variant="outline" 
-                            size="lg"
-                            className="border-2 border-white/80 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-navy px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold hover-scale transition-all duration-300 w-full sm:w-auto"
-                          >
-                            Learn More
-                          </Button>
-                        </div>
+                      <div className="w-full flex items-center min-h-full">
+                        <div className="max-w-2xl text-white z-10 relative">
+                          <div className="mb-4">
+                            <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium border border-white/30">
+                              New Collection
+                            </span>
+                          </div>
+                          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-tight">
+                            {slide.title}
+                            <span className="block text-orange drop-shadow-lg">{slide.highlight}</span>
+                          </h1>
+                          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 text-white/90 leading-relaxed max-w-xl">
+                            {slide.description}
+                          </p>
+                          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                            <Button 
+                              size="lg"
+                              className="bg-gradient-to-r from-orange to-red-600 hover:from-orange/90 hover:to-red-600/90 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold shadow-2xl hover:shadow-orange/25 transition-all duration-300 w-full sm:w-auto group"
+                            >
+                              Shop Now
+                              <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300 inline-block text-base sm:text-lg md:text-xl">→</span>
+                            </Button>
+                            <Button 
+                              variant="outline" 
+                              size="lg"
+                              className="border-2 border-white/80 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-navy px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold transition-all duration-300 w-full sm:w-auto"
+                            >
+                              Learn More
+                            </Button>
+                          </div>
                       </div>
                     </div>
                   </div>
