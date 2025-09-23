@@ -1,4 +1,7 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
+import ProductQuickViewModal from "./ProductQuickViewModal";
 import headphones from "@/assets/headphones.jpg";
 import smartphone from "@/assets/smartphone.jpg";
 import watch from "@/assets/watch.jpg";
@@ -13,6 +16,7 @@ const products = [
     price: 199.99,
     originalPrice: 249.99,
     image: headphones,
+    images: [headphones, smartphone, watch, laptop],
     rating: 5,
     reviews: 127,
     isOnSale: true,
@@ -23,6 +27,7 @@ const products = [
     name: "Latest Smartphone Pro Max",
     price: 999.99,
     image: smartphone,
+    images: [smartphone, headphones, camera],
     rating: 4,
     reviews: 89,
     isOnSale: false
@@ -33,6 +38,7 @@ const products = [
     price: 399.99,
     originalPrice: 499.99,
     image: watch,
+    images: [watch, smartphone, headphones, laptop, camera],
     rating: 4,
     reviews: 203,
     isOnSale: true,
@@ -43,6 +49,7 @@ const products = [
     name: "Ultra-thin Laptop",
     price: 1299.99,
     image: laptop,
+    images: [laptop, keyboard, smartphone],
     rating: 5,
     reviews: 156,
     isOnSale: false
@@ -53,6 +60,7 @@ const products = [
     price: 149.99,
     originalPrice: 199.99,
     image: keyboard,
+    images: [keyboard, laptop, headphones],
     rating: 4,
     reviews: 78,
     isOnSale: true,
@@ -63,6 +71,7 @@ const products = [
     name: "Professional DSLR Camera",
     price: 899.99,
     image: camera,
+    images: [camera, laptop, smartphone, watch],
     rating: 5,
     reviews: 234,
     isOnSale: false
@@ -70,6 +79,19 @@ const products = [
 ];
 
 const ProductGrid = () => {
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
+
+  const handleQuickView = (product: any) => {
+    setSelectedProduct(product);
+    setIsQuickViewOpen(true);
+  };
+
+  const handleCloseQuickView = () => {
+    setIsQuickViewOpen(false);
+    setSelectedProduct(null);
+  };
+
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
@@ -87,15 +109,22 @@ const ProductGrid = () => {
             <ProductCard
               key={product.id}
               {...product}
+              onQuickView={handleQuickView}
             />
           ))}
         </div>
 
         <div className="text-center">
-          <button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+          <Link to="/shop" className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-semibold transition-colors inline-block">
             View All Products
-          </button>
+          </Link>
         </div>
+
+        <ProductQuickViewModal
+          product={selectedProduct}
+          isOpen={isQuickViewOpen}
+          onClose={handleCloseQuickView}
+        />
       </div>
     </section>
   );

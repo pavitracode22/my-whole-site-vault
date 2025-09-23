@@ -1,6 +1,7 @@
 import { Star, ShoppingCart, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   id: number;
@@ -8,22 +9,33 @@ interface ProductCardProps {
   price: number;
   originalPrice?: number;
   image: string;
+  images?: string[];
   rating: number;
   reviews: number;
   isOnSale?: boolean;
   discount?: number;
+  onQuickView?: (product: ProductCardProps) => void;
 }
 
 const ProductCard = ({ 
+  id,
   name, 
   price, 
   originalPrice, 
   image, 
+  images,
   rating, 
   reviews, 
   isOnSale = false,
-  discount 
+  discount,
+  onQuickView 
 }: ProductCardProps) => {
+  const navigate = useNavigate();
+
+  const handleProductClick = () => {
+    navigate(`/product/${id}`);
+  };
+
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
       <Star 
@@ -38,7 +50,7 @@ const ProductCard = ({
   };
 
   return (
-    <div className="product-card group transition-all duration-300">
+    <div className="product-card group transition-all duration-300 cursor-pointer" onClick={handleProductClick}>
       {/* Product Image */}
       <div className="relative overflow-hidden rounded-lg mb-4">
         {isOnSale && discount && (
@@ -50,6 +62,10 @@ const ProductCard = ({
           variant="ghost"
           size="icon"
           className="absolute top-2 right-2 bg-white/80 hover:bg-white z-10 opacity-0 group-hover:opacity-100 transition-all duration-300"
+          onClick={(e) => {
+            e.stopPropagation();
+            // Add to wishlist functionality here
+          }}
         >
           <Heart className="h-4 w-4 hover:text-offer transition-colors" />
         </Button>
@@ -62,7 +78,13 @@ const ProductCard = ({
         
         {/* Overlay with quick view button */}
         <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <Button className="bg-white text-navy hover:bg-gray-100 transition-all duration-300">
+          <Button 
+            className="bg-white text-navy hover:bg-gray-100 transition-all duration-300"
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView?.({ id, name, price, originalPrice, image, images, rating, reviews, isOnSale, discount });
+            }}
+          >
             Quick View
           </Button>
         </div>
@@ -95,7 +117,13 @@ const ProductCard = ({
         </div>
 
         {/* Add to Cart Button */}
-        <Button className="w-full bg-primary hover:bg-primary/90 text-white transition-all duration-300 group">
+        <Button 
+          className="w-full bg-primary hover:bg-primary/90 text-white transition-all duration-300 group"
+          onClick={(e) => {
+            e.stopPropagation();
+            // Add to cart functionality here
+          }}
+        >
           <ShoppingCart className="h-4 w-4 mr-2 group-hover:rotate-12 transition-transform" />
           Add to Cart
         </Button>

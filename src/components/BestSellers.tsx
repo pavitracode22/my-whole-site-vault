@@ -1,4 +1,6 @@
+import { useState } from "react";
 import ProductCard from "./ProductCard";
+import ProductQuickViewModal from "./ProductQuickViewModal";
 import headphones from "@/assets/headphones.jpg";
 import smartphone from "@/assets/smartphone.jpg";
 import watch from "@/assets/watch.jpg";
@@ -11,6 +13,7 @@ const bestSellers = [
     price: 199.99,
     originalPrice: 249.99,
     image: headphones,
+    images: [headphones, smartphone, watch, laptop],
     rating: 5,
     reviews: 1247,
     isOnSale: true,
@@ -21,6 +24,7 @@ const bestSellers = [
     name: "Latest Smartphone Pro Max",
     price: 999.99,
     image: smartphone,
+    images: [smartphone, headphones, watch],
     rating: 5,
     reviews: 892,
     isOnSale: false
@@ -31,6 +35,7 @@ const bestSellers = [
     price: 399.99,
     originalPrice: 499.99,
     image: watch,
+    images: [watch, smartphone, headphones, laptop, headphones],
     rating: 4,
     reviews: 2034,
     isOnSale: true,
@@ -41,6 +46,7 @@ const bestSellers = [
     name: "Ultra-thin Laptop",
     price: 1299.99,
     image: laptop,
+    images: [laptop, smartphone, watch],
     rating: 5,
     reviews: 1567,
     isOnSale: false
@@ -48,6 +54,19 @@ const bestSellers = [
 ];
 
 const BestSellers = () => {
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
+
+  const handleQuickView = (product: any) => {
+    setSelectedProduct(product);
+    setIsQuickViewOpen(true);
+  };
+
+  const handleCloseQuickView = () => {
+    setIsQuickViewOpen(false);
+    setSelectedProduct(null);
+  };
+
   return (
     <section className="py-16 bg-section">
       <div className="container mx-auto px-4">
@@ -65,9 +84,16 @@ const BestSellers = () => {
             <ProductCard
               key={product.id}
               {...product}
+              onQuickView={handleQuickView}
             />
           ))}
         </div>
+
+        <ProductQuickViewModal
+          product={selectedProduct}
+          isOpen={isQuickViewOpen}
+          onClose={handleCloseQuickView}
+        />
       </div>
     </section>
   );
