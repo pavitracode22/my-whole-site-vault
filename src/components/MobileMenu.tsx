@@ -9,6 +9,7 @@ import {
   User, 
   Search,
   ChevronRight,
+  ChevronDown,
   Truck,
   Phone,
   HelpCircle
@@ -16,9 +17,18 @@ import {
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
+
+  const toggleCategory = (category: string) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [category]: !prev[category]
+    }));
+  };
 
   const menuItems = [
     {
@@ -54,12 +64,63 @@ const MobileMenu = () => {
   ];
 
   const categories = [
-    { name: "Electronics", href: "/category/electronics" },
-    { name: "Fashion", href: "/category/fashion" },
-    { name: "Home & Garden", href: "/category/home" },
-    { name: "Sports", href: "/category/sports" },
-    { name: "Books", href: "/category/books" },
-    { name: "Beauty", href: "/category/beauty" },
+    { 
+      name: "Electronics", 
+      href: "/category/electronics",
+      subcategories: [
+        { name: "Smartphones", href: "/category/smartphones" },
+        { name: "Laptops", href: "/category/laptops" },
+        { name: "Tablets", href: "/category/tablets" },
+        { name: "Headphones", href: "/category/headphones" },
+        { name: "Cameras", href: "/category/cameras" },
+      ]
+    },
+    { 
+      name: "Clothing", 
+      href: "/category/fashion",
+      subcategories: [
+        { name: "Men", href: "/category/clothing-men" },
+        { name: "Women", href: "/category/clothing-women" },
+        { name: "Kids", href: "/category/clothing-kids" },
+      ]
+    },
+    { 
+      name: "Home & Garden", 
+      href: "/category/home",
+      subcategories: [
+        { name: "Furniture", href: "/category/furniture" },
+        { name: "Kitchen", href: "/category/kitchen" },
+        { name: "Garden", href: "/category/garden" },
+        { name: "Home Decor", href: "/category/decor" },
+      ]
+    },
+    { 
+      name: "Sports & Outdoors", 
+      href: "/category/sports",
+      subcategories: [
+        { name: "Fitness", href: "/category/fitness" },
+        { name: "Outdoor", href: "/category/outdoor" },
+        { name: "Sports Equipment", href: "/category/sports-equipment" },
+      ]
+    },
+    { 
+      name: "Books", 
+      href: "/category/books",
+      subcategories: [
+        { name: "Fiction", href: "/category/fiction" },
+        { name: "Non-Fiction", href: "/category/non-fiction" },
+        { name: "Textbooks", href: "/category/textbooks" },
+      ]
+    },
+    { 
+      name: "Beauty & Health", 
+      href: "/category/beauty",
+      subcategories: [
+        { name: "Skincare", href: "/category/skincare" },
+        { name: "Makeup", href: "/category/makeup" },
+        { name: "Health", href: "/category/health" },
+      ]
+    },
   ];
 
   const accountLinks = [
@@ -142,22 +203,55 @@ const MobileMenu = () => {
 
           <Separator />
 
-          {/* Categories */}
+          {/* Categories with Submenus */}
           <div className="p-4">
             <h3 className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-3">
               Categories
             </h3>
             <div className="space-y-1">
               {categories.map((category) => (
-                <Link
+                <Collapsible 
                   key={category.href}
-                  to={category.href}
-                  onClick={handleLinkClick}
-                  className="flex items-center justify-between p-2 rounded-lg text-text-primary hover:bg-muted transition-colors"
+                  open={expandedCategories[category.name]}
+                  onOpenChange={() => toggleCategory(category.name)}
                 >
-                  <span>{category.name}</span>
-                  <ChevronRight className="h-4 w-4 text-text-secondary" />
-                </Link>
+                  <div className="flex items-center">
+                    <Link
+                      to={category.href}
+                      onClick={handleLinkClick}
+                      className="flex-1 flex items-center p-2 rounded-lg text-text-primary hover:bg-muted transition-colors"
+                    >
+                      <span>{category.name}</span>
+                    </Link>
+                    <CollapsibleTrigger asChild>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="p-2 h-auto"
+                      >
+                        {expandedCategories[category.name] ? (
+                          <ChevronDown className="h-4 w-4 text-text-secondary" />
+                        ) : (
+                          <ChevronRight className="h-4 w-4 text-text-secondary" />
+                        )}
+                      </Button>
+                    </CollapsibleTrigger>
+                  </div>
+                  <CollapsibleContent className="ml-4 mt-1">
+                    <div className="space-y-1">
+                      {category.subcategories.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          to={sub.href}
+                          onClick={handleLinkClick}
+                          className="block p-2 pl-4 rounded-lg text-sm text-text-secondary hover:bg-muted transition-colors"
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
               ))}
             </div>
           </div>
