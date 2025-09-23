@@ -17,7 +17,7 @@ import {
 
 const Header = () => {
   return (
-    <header className="bg-navy text-white sticky top-0 z-50 shadow-lg">
+    <header className="bg-navy text-white sticky top-0 z-50 shadow-lg border-0 m-0">
       <div className="container mx-auto px-4">
         {/* Top bar */}
         <div className="hidden sm:flex items-center justify-between py-2 border-b border-white/10">

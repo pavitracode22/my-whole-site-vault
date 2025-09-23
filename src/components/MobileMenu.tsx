@@ -62,12 +62,32 @@ const MobileMenu = () => {
     { name: "Beauty", href: "/category/beauty" },
   ];
 
+  const accountLinks = [
+    { name: "Login", href: "/login", icon: User },
+    { name: "Register", href: "/register", icon: User },
+    { name: "Dashboard", href: "/dashboard" },
+    { name: "My Orders", href: "/orders" },
+    { name: "Wishlist", href: "/wishlist", icon: Heart },
+    { name: "Address Book", href: "/address-book" },
+    { name: "Account Settings", href: "/account-settings" },
+  ];
+
+  const shoppingLinks = [
+    { name: "Shopping Cart", href: "/cart", icon: ShoppingBag },
+    { name: "Checkout", href: "/checkout" },
+    { name: "Deals & Offers", href: "/deals" },
+    { name: "Compare Products", href: "/compare" },
+  ];
+
   const supportLinks = [
     { name: "Help & FAQ", href: "/faq", icon: HelpCircle },
     { name: "Contact Us", href: "/contact", icon: Phone },
+    { name: "Track Order", href: "/track-order", icon: Truck },
+    { name: "Order Confirmation", href: "/order-confirmation" },
     { name: "About Us", href: "/about" },
     { name: "Privacy Policy", href: "/privacy-policy" },
     { name: "Terms of Service", href: "/terms" },
+    { name: "Return Policy", href: "/return-policy" },
   ];
 
   const handleLinkClick = () => {
@@ -144,10 +164,56 @@ const MobileMenu = () => {
 
           <Separator />
 
+          {/* Account Links */}
+          <div className="p-4">
+            <h3 className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-3">
+              Account & Orders
+            </h3>
+            <div className="space-y-1">
+              {accountLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={handleLinkClick}
+                  className="flex items-center gap-3 p-2 rounded-lg text-text-primary hover:bg-muted transition-colors"
+                >
+                  {link.icon && <link.icon className="h-4 w-4 text-primary" />}
+                  <span className="text-sm">{link.name}</span>
+                  <ChevronRight className="h-4 w-4 ml-auto text-text-secondary" />
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Separator />
+
+          {/* Shopping Links */}
+          <div className="p-4">
+            <h3 className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-3">
+              Shopping
+            </h3>
+            <div className="space-y-1">
+              {shoppingLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={handleLinkClick}
+                  className="flex items-center gap-3 p-2 rounded-lg text-text-primary hover:bg-muted transition-colors"
+                >
+                  {link.icon && <link.icon className="h-4 w-4 text-primary" />}
+                  <span className="text-sm">{link.name}</span>
+                  <ChevronRight className="h-4 w-4 ml-auto text-text-secondary" />
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Separator />
+
           {/* Support Links */}
           <div className="p-4">
             <h3 className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-3">
-              Support
+              Support & Info
             </h3>
             <div className="space-y-1">
               {supportLinks.map((link) => (
