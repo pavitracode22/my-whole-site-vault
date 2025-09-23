@@ -102,8 +102,8 @@ const MobileMenu = () => {
         </Button>
       </SheetTrigger>
       
-      <SheetContent side="left" className="w-80 p-0 bg-white">
-        <SheetHeader className="p-6 bg-navy text-white">
+      <SheetContent side="left" className="w-80 p-0 bg-white flex flex-col h-full">
+        <SheetHeader className="p-6 bg-navy text-white flex-shrink-0">
           <div className="flex items-center justify-between">
             <SheetTitle className="text-white">
               <Link to="/" onClick={handleLinkClick} className="text-xl font-bold">
@@ -121,7 +121,7 @@ const MobileMenu = () => {
           </div>
         </SheetHeader>
 
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto min-h-0">
           {/* Main Navigation */}
           <div className="p-4">
             <div className="space-y-1">
@@ -251,7 +251,7 @@ const MobileMenu = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="p-4 bg-muted/30 border-t">
+        <div className="p-4 bg-muted/30 border-t flex-shrink-0">
           <div className="text-center text-xs text-text-secondary">
             <p className="mb-1">Free shipping on orders over $50</p>
             <p>Customer Service: 1-800-ESTORE</p>
